@@ -2,8 +2,8 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { AppContext } from 'contexts/App'
 import { useContext } from 'react'
-import { Input, ErrorSpan, SubmitButton } from './styled'
 import { useRouter } from 'next/router'
+import { FormControl, TextField, Button } from '@mui/material'
 
 const NameForm = () => {
 
@@ -27,30 +27,38 @@ const NameForm = () => {
     })
 
     return (
-        <form 
-            style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
+        <FormControl
+            sx={{
+                maxWidth: '320px',
                 width: '100%',
-            }}        
-            onSubmit={formik.handleSubmit}
+                textAlign: 'center'
+            }}
         >
-            <label htmlFor="name">
-                <h2>Digite seu nome:</h2>
-            </label>
-            <Input
+            <TextField
+                autoFocus
+                error={!!(formik.touched.name && formik.errors.name)}
+                fullWidth
+                helperText={formik.errors.name}
                 id="name"
-                type="text"
-                {...formik.getFieldProps('name')}
+                inputProps={formik.getFieldProps('name')}
+                label="Nome"
+                required
+                sx={{
+                    marginBottom: !!(formik.touched.name && formik.errors.name) ? 2 : 5
+                }}
+                variant="outlined"
             />
-            {formik.touched.name && formik.errors.name ? (
-                <ErrorSpan>{formik.errors.name}</ErrorSpan>
-            ) : null}
-            <SubmitButton disabled={!formik.isValid} type="submit">
+            <Button
+                color="success"
+                disabled={!formik.isValid}
+                disableElevation
+                onClick={() => formik.handleSubmit()}
+                type="submit"
+                variant="contained"
+            >
                 Ver Cartas
-            </SubmitButton>
-        </form>
+            </Button>
+        </FormControl>
     )
 }
 

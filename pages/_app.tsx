@@ -1,12 +1,17 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { AppContextProvider } from '../contexts/App'
+import { ColorModeContextProvider } from 'contexts/ColorMode'
+import { AppContextProvider } from 'contexts/App'
+import CssBaseline from '@mui/material/CssBaseline'
 
 function MyApp({ Component, pageProps }: AppProps) {
+
     return (
-        <AppContextProvider>
-            <Component {...pageProps} />
-        </AppContextProvider>
+        <ColorModeContextProvider>
+            <AppContextProvider>
+                <CssBaseline/>
+                <Component {...pageProps}/>
+            </AppContextProvider>
+        </ColorModeContextProvider>
     )
 }
 
