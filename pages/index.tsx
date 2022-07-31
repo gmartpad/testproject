@@ -3,10 +3,9 @@ import Layout from 'components/Layout'
 import NameForm from 'components/NameForm'
 
 const Home: NextPage = () => {
-
     return (
         <Layout>
-            <NameForm/>
+            <NameForm />
         </Layout>
     )
 }

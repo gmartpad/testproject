@@ -1,20 +1,14 @@
 import { useTheme } from '@mui/material/styles'
-import {
-    Box,
-    Link as MuiLink,
-    Typography,
-    Divider
-} from '@mui/material' 
+import { Box, Link as MuiLink, Typography, Divider } from '@mui/material'
 
 function BaseFooter() {
-
     const theme = useTheme()
 
     return (
         <>
-            <Divider/>
-            <Box 
-                component="footer"
+            <Divider />
+            <Box
+                component='footer'
                 sx={{
                     display: 'flex',
                     justifyContent: 'space-around',
@@ -26,12 +20,12 @@ function BaseFooter() {
                     target='_blank'
                     rel='noopener noreferrer'
                 >
-                    <Typography 
-                        variant="h6"
-                        component="div"
+                    <Typography
+                        variant='h6'
+                        component='div'
                         sx={{
                             flexGrow: 1,
-                            color: theme.palette.primary.light
+                            color: theme.palette.primary.light,
                         }}
                     >
                         Feito por Gabriel Martins Padoin
@@ -42,12 +36,12 @@ function BaseFooter() {
                     target='_blank'
                     rel='noopener noreferrer'
                 >
-                    <Typography 
-                        variant="h6" 
-                        component="div" 
-                        sx={{ 
+                    <Typography
+                        variant='h6'
+                        component='div'
+                        sx={{
                             flexGrow: 1,
-                            color: theme.palette.primary.light
+                            color: theme.palette.primary.light,
                         }}
                     >
                         Distribuído por Vercel.

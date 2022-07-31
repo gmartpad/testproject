@@ -7,7 +7,6 @@ import { TextField, Button } from '@mui/material'
 import { BaseForm } from './styled'
 
 const NameForm = () => {
-
     const { name, setName } = useContext(AppContext)
     const router = useRouter()
 
@@ -21,10 +20,10 @@ const NameForm = () => {
                 .max(30, 'Tem de ter 30 caracteres ou menos')
                 .required('Preencha seu nome'),
         }),
-        onSubmit: values => {
+        onSubmit: (values) => {
             setName(values.name)
             router.push('/cartas')
-        }
+        },
     })
 
     return (
@@ -39,22 +38,22 @@ const NameForm = () => {
                 error={!!(formik.touched.name && formik.errors.name)}
                 fullWidth
                 helperText={formik.errors.name}
-                id="name"
+                id='name'
                 inputProps={formik.getFieldProps('name')}
-                label="Nome"
+                label='Nome'
                 required
                 sx={{
-                    marginBottom: (formik.touched.name && formik.errors.name) ? 2 : 5
+                    marginBottom: formik.touched.name && formik.errors.name ? 2 : 5,
                 }}
-                variant="outlined"
+                variant='outlined'
             />
             <Button
-                color="success"
+                color='success'
                 disabled={!formik.isValid}
                 disableElevation
                 sx={{ width: '100%' }}
-                type="submit"
-                variant="contained"
+                type='submit'
+                variant='contained'
             >
                 Ver Cartas
             </Button>

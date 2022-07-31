@@ -4,12 +4,11 @@ import { AppContextProvider } from 'contexts/App'
 import CssBaseline from '@mui/material/CssBaseline'
 
 function MyApp({ Component, pageProps }: AppProps) {
-
     return (
         <ColorModeContextProvider>
             <AppContextProvider>
-                <CssBaseline/>
-                <Component {...pageProps}/>
+                <CssBaseline />
+                <Component {...pageProps} />
             </AppContextProvider>
         </ColorModeContextProvider>
     )

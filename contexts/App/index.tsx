@@ -5,24 +5,19 @@ interface AppContextProps {
 }
 
 interface IAppContext {
-    name: string,
+    name: string
     setName: Dispatch<SetStateAction<string>>
 }
 
 const initialValue = {
     name: '',
-    setName: () => undefined
+    setName: () => undefined,
 }
 
 export const AppContext = createContext<IAppContext>(initialValue)
 
 export const AppContextProvider = ({ children }: AppContextProps) => {
-    
     const [name, setName] = useState(initialValue.name)
 
-    return (
-        <AppContext.Provider value={{ name, setName }}>
-            {children}
-        </AppContext.Provider>
-    )
+    return <AppContext.Provider value={{ name, setName }}>{children}</AppContext.Provider>
 }

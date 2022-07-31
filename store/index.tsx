@@ -6,7 +6,7 @@ export interface ICard {
     images: {
         svg: string
         png: string
-    },
+    }
     value: string
     suit: string
     points?: number
@@ -23,32 +23,32 @@ export const rawDeckResponse$ = new BehaviorSubject<IDeckResponse>({
     success: false,
     deck_id: '',
     cards: [],
-    remaining: 0
+    remaining: 0,
 })
 
 export const rawExtraCardsResponse$ = new BehaviorSubject<IDeckResponse>({
     success: false,
     deck_id: '',
     cards: [],
-    remaining: 0
+    remaining: 0,
 })
 
 fetch('http://deckofcardsapi.com/api/deck/new/draw/?count=5')
-    .then(res => res.json())
+    .then((res) => res.json())
     .then((data: IDeckResponse) => {
         rawDeckResponse$.next(data)
         fetch(`http://deckofcardsapi.com/api/deck/${data.deck_id}/draw/?count=3`)
-            .then(res => res.json())
+            .then((res) => res.json())
             .then((data: IDeckResponse) => rawExtraCardsResponse$.next(data))
     })
 
 //
 
-export interface IFormattedCard { 
-    name: string 
-    image: string 
+export interface IFormattedCard {
+    name: string
+    image: string
     description: string
-    points: number 
+    points: number
 }
 
 export interface IFormattedHand {
@@ -56,23 +56,23 @@ export interface IFormattedHand {
 }
 
 export const formattedDeck$ = rawDeckResponse$.pipe<IFormattedHand>(
-    map(deck => ({
-        cards: deck.cards.map(card => ({
+    map((deck) => ({
+        cards: deck.cards.map((card) => ({
             name: card.code,
             image: card.image,
             description: card.value + ' OF ' + card.suit,
-            points: Math.floor(Math.random() * 11)
-        }))    
-    }))
+            points: Math.floor(Math.random() * 11),
+        })),
+    })),
 )
 
 export const formattedExtraCards$ = rawExtraCardsResponse$.pipe<IFormattedHand>(
-    map(deck => ({
-        cards: deck.cards.map(card => ({
+    map((deck) => ({
+        cards: deck.cards.map((card) => ({
             name: card.code,
             image: card.image,
             description: card.value + ' OF ' + card.suit,
-            points: Math.floor(Math.random() * 11)
-        }))    
-    }))
+            points: Math.floor(Math.random() * 11),
+        })),
+    })),
 )

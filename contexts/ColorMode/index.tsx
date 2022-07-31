@@ -12,13 +12,12 @@ interface IColorModeContext {
 }
 
 const initialValue = {
-    toggleColorMode: () => undefined
+    toggleColorMode: () => undefined,
 }
 
 export const ColorModeContext = createContext<IColorModeContext>(initialValue)
 
 export const ColorModeContextProvider = ({ children }: ColorModeContextProps) => {
-
     const initialMode = () => {
         const colorMode = localStorage.getItem('colorMode')
         if (!colorMode) {
@@ -48,23 +47,22 @@ export const ColorModeContextProvider = ({ children }: ColorModeContextProps) =>
     )
 
     const theme = useMemo(
-        () => createTheme({
-            palette: {
-                mode,
-            },
-        }),
+        () =>
+            createTheme({
+                palette: {
+                    mode,
+                },
+            }),
         [mode],
     )
 
-    useEffect(()=>{
+    useEffect(() => {
         setMode(initialMode)
     }, [])
 
     return (
         <ColorModeContext.Provider value={colorMode}>
-            <ThemeProvider theme={theme}>
-                {children}
-            </ThemeProvider>
+            <ThemeProvider theme={theme}>{children}</ThemeProvider>
         </ColorModeContext.Provider>
     )
 }
