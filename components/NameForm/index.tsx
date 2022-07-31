@@ -44,7 +44,7 @@ const NameForm = () => {
                 label="Nome"
                 required
                 sx={{
-                    marginBottom: !!(formik.touched.name && formik.errors.name) ? 2 : 5
+                    marginBottom: (formik.touched.name && formik.errors.name) ? 2 : 5
                 }}
                 variant="outlined"
             />

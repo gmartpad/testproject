@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { 
     AppBar,
     Box,
@@ -8,7 +8,6 @@ import {
     IconButton,
     Divider
 } from '@mui/material'
-import { useContext } from 'react'
 import { AppContext } from 'contexts/App'
 import { ColorModeContext } from 'contexts/ColorMode'
 import { useRouter } from 'next/router'

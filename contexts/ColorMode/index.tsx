@@ -22,7 +22,7 @@ export const ColorModeContextProvider = ({ children }: ColorModeContextProps) =>
     const initialMode = () => {
         const colorMode = localStorage.getItem('colorMode')
         if (!colorMode) {
-            localStorage.setItem("colorMode", "light")
+            localStorage.setItem('colorMode', 'light')
             return 'light'
         } else {
             return colorMode === 'light' ? 'light' : 'dark'
