@@ -3,7 +3,8 @@ import * as Yup from 'yup'
 import { AppContext } from 'contexts/App'
 import { useContext } from 'react'
 import { useRouter } from 'next/router'
-import { FormControl, TextField, Button } from '@mui/material'
+import { TextField, Button } from '@mui/material'
+import { BaseForm } from './styled'
 
 const NameForm = () => {
 
@@ -27,11 +28,10 @@ const NameForm = () => {
     })
 
     return (
-        <FormControl
-            sx={{
-                maxWidth: '320px',
-                width: '100%',
-                textAlign: 'center'
+        <BaseForm
+            onSubmit={(e) => {
+                e.preventDefault()
+                formik.handleSubmit()
             }}
         >
             <TextField
@@ -52,13 +52,13 @@ const NameForm = () => {
                 color="success"
                 disabled={!formik.isValid}
                 disableElevation
-                onClick={() => formik.handleSubmit()}
+                sx={{ width: '100%' }}
                 type="submit"
                 variant="contained"
             >
                 Ver Cartas
             </Button>
-        </FormControl>
+        </BaseForm>
     )
 }
 

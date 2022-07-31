@@ -1,23 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
-const baseFormElementStyle = css`
+export const BaseForm = styled.form`
+    max-width: '320px';
     width: '100%';
-    max-width: 320px;
-    padding: 15px;
-    font-size: 20px;
-    border-radius: 10px;
-`
-
-export const Input = styled.input`
-    ${baseFormElementStyle}
-`
-
-export const ErrorSpan = styled.span`
-    ${baseFormElementStyle}
-    margin-top: 20px;
-`
-
-export const SubmitButton = styled.button`
-    ${baseFormElementStyle}
-    margin-top: 20px;
+    text-align: 'center';
 `
