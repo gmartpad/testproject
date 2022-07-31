@@ -14,11 +14,6 @@
         "format": "prettier --write . --config ./.prettierrc",
         "prepare": "husky install"
     },
-    "engines": {
-        "node": ">=16.0.0",
-        "yarn": ">=1.22.18",
-        "npm": "please-use-yarn"
-    },
     "dependencies": {
         "@emotion/react": "^11.9.3",
         "@emotion/styled": "^11.9.3",
