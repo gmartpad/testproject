@@ -8,7 +8,6 @@ import {
     IconButton,
     Divider,
     Menu,
-    MenuItem,
 } from '@mui/material'
 import { AppContext } from 'contexts/App'
 import { ColorModeContext } from 'contexts/ColorMode'
