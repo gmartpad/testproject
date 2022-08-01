@@ -1,4 +1,4 @@
-import { Box, Grid, Typography, CircularProgress } from '@mui/material'
+import { Box, Grid, Typography } from '@mui/material'
 import { Dispatch, SetStateAction } from 'react'
 import Image from 'next/image'
 import { IFormattedHand } from 'store'
