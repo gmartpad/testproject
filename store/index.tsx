@@ -33,11 +33,11 @@ export const rawExtraCardsResponse$ = new BehaviorSubject<IDeckResponse>({
     remaining: 0,
 })
 
-fetch('http://deckofcardsapi.com/api/deck/new/draw/?count=5')
+fetch('https://deckofcardsapi.com/api/deck/new/draw/?count=5')
     .then((res) => res.json())
     .then((data: IDeckResponse) => {
         rawDeckResponse$.next(data)
-        fetch(`http://deckofcardsapi.com/api/deck/${data.deck_id}/draw/?count=3`)
+        fetch(`https://deckofcardsapi.com/api/deck/${data.deck_id}/draw/?count=3`)
             .then((res) => res.json())
             .then((data: IDeckResponse) => rawExtraCardsResponse$.next(data))
     })
