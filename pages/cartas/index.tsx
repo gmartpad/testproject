@@ -2,9 +2,10 @@ import Layout from 'components/Layout'
 import { AppContext } from 'contexts/App'
 import { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Box, Button, CircularProgress, Grid, Typography } from '@mui/material'
+import { Box, CircularProgress } from '@mui/material'
 import { formattedDeck$, formattedExtraCards$, IFormattedHand } from 'store'
-import Image from 'next/image'
+import CardButtonContainer from 'components/CardButtonContainer'
+import CardList from 'components/CardList'
 
 const Cartas = () => {
     const { name } = useContext(AppContext)
@@ -58,84 +59,20 @@ const Cartas = () => {
                 <CircularProgress />
             ) : (
                 <Box>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            width: '100%',
-                            justifyContent: 'space-around',
-                        }}
-                    >
-                        <Button
-                            onClick={drawCard}
-                            disabled={!addCardCounter}
-                            variant='contained'
-                            color='success'
-                        >
-                            Comprar 1
-                        </Button>
-                        <Button onClick={shuffleHand} variant='contained' color='secondary'>
-                            Embaralhar
-                        </Button>
-                    </Box>
-                    <Grid
-                        container
-                        sx={{
-                            paddingTop: '4vh',
-                            paddingBottom: '4vh',
-                        }}
-                    >
-                        {displayHand.cards.map((card, key) => (
-                            <Grid
-                                item
-                                key={key}
-                                xs={6}
-                                md={3}
-                                sx={{
-                                    display: 'flex',
-                                    flexDirection: 'column',
-                                    alignItems: 'center',
-                                    padding: '1vw',
-                                }}
-                            >
-                                <Image
-                                    alt={card.description}
-                                    src={card.image}
-                                    width={150}
-                                    height={209}
-                                    layout='fixed'
-                                    onLoadingComplete={({ naturalWidth, naturalHeight }) =>
-                                        setCardImageRatio(naturalWidth / naturalHeight)
-                                    }
-                                />
-                                <Box>
-                                    <Typography align='center'>Nome: {card.name}</Typography>
-                                    <Typography align='center'>
-                                        Descrição: {card.description}
-                                    </Typography>
-                                    <Typography align='center'>Pontos: {card.points}</Typography>
-                                </Box>
-                            </Grid>
-                        ))}
-                    </Grid>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            width: '100%',
-                            justifyContent: 'space-around',
-                        }}
-                    >
-                        <Button
-                            onClick={drawCard}
-                            disabled={!addCardCounter}
-                            variant='contained'
-                            color='success'
-                        >
-                            Comprar 1
-                        </Button>
-                        <Button onClick={shuffleHand} variant='contained' color='secondary'>
-                            Embaralhar
-                        </Button>
-                    </Box>
+                    <CardButtonContainer
+                        drawCard={drawCard}
+                        addCardCounter={addCardCounter}
+                        shuffleHand={shuffleHand}
+                    />
+                    <CardList
+                        displayHand={displayHand}
+                        setCardImageRatio={setCardImageRatio}
+                    />
+                    <CardButtonContainer
+                        drawCard={drawCard}
+                        addCardCounter={addCardCounter}
+                        shuffleHand={shuffleHand}
+                    />
                 </Box>
             )}
         </Layout>
